@@ -8,8 +8,9 @@ pipeline {
          }
         stage('Run Ansible Playbook') {
             steps {
-                ansiblePlaybook credentialsId: 'ansible-ssh', disableHostKeyChecking: true, installation: 'ansible2', inventory: 'inventory.ini', playbook: 'install_apache.yml  ', vaultTmpPath: ''
-            }
+                cd /var/lib/jenkins/workspace/Jenkins-ansible
+                    ansible-playbook install_apache.yml -i inventory.ini --private-key ssh_key.pem -u ansadmin
+
         }
     }
 }
