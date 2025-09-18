@@ -8,7 +8,7 @@ pipeline {
          }
         stage('Run Ansible Playbook') {
             steps {
-                cd /var/lib/jenkins/workspace/Jenkins-ansible
+                cd /var/lib/jenkins/workspace/jenkins-ansible
                     ansible-playbook install_apache.yml -i inventory.ini --private-key ssh_key.pem -u ansadmin
 
         }
